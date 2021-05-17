@@ -1,0 +1,31 @@
+object FormImages: TFormImages
+  Left = 0
+  Top = 0
+  Caption = 'FormImages'
+  ClientHeight = 357
+  ClientWidth = 622
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poScreenCenter
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Image1: TImage
+    Left = 0
+    Top = 0
+    Width = 622
+    Height = 357
+    Align = alClient
+    Center = True
+    Proportional = True
+    Stretch = True
+    ExplicitLeft = 256
+    ExplicitTop = 96
+    ExplicitWidth = 105
+    ExplicitHeight = 105
+  end
+end
