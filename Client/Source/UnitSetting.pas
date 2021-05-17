@@ -1,8 +1,11 @@
-unit UnitSetting;
+﻿unit UnitSetting;
 
 interface
- var
-  ServerSetting : string;
+
+var
+  ServerSetting: string;
+
 implementation
 
 end.
+

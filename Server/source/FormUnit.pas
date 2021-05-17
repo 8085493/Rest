@@ -3,9 +3,10 @@
 interface
 
 uses
-  Winapi.Messages, System.SysUtils, System.Variants, System.Classes, UnitSQLDataBase,
-  Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, UnitSettingConnection,
-  Vcl.AppEvnts, Vcl.StdCtrls, IdHTTPWebBrokerBridge, Web.HTTPApp, Vcl.ExtCtrls;
+  Winapi.Messages, System.SysUtils, System.Variants, System.Classes,
+  UnitSQLDataBase, Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
+  UnitSettingConnection, Vcl.AppEvnts, Vcl.StdCtrls, IdHTTPWebBrokerBridge,
+  Web.HTTPApp, Vcl.ExtCtrls;
 
 type
   TFormMain = class(TForm)
@@ -63,7 +64,8 @@ begin
 end;
 
 procedure TFormMain.ButtonSettingClick(Sender: TObject);
-  var ASetting : TSettingConnection;
+var
+  ASetting: TSettingConnection;
 begin
   StopServer;
   if OpenDialog.Execute then
@@ -72,10 +74,10 @@ begin
     ASetting.IsPathDataBase := OpenDialog.FileName;
     PanelButton.Visible := False;
     if DataModule1.Init(ASetting) then
-      begin
-        PanelButton.Visible := True;
-        ASetting.SetSaveSetting;
-      end
+    begin
+      PanelButton.Visible := True;
+      ASetting.SetSaveSetting;
+    end
     else
       PanelButton.Visible := False;
   end;

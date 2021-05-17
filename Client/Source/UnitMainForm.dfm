@@ -33784,22 +33784,19 @@ object FormMain: TFormMain
     AlignWithMargins = True
     Left = 3
     Top = 60
-    Width = 393
+    Width = 396
     Height = 511
     Align = alLeft
     Indent = 19
     TabOrder = 0
     OnChange = TreeView1Change
     OnChanging = TreeView1Changing
-    ExplicitLeft = 672
-    ExplicitTop = 24
-    ExplicitHeight = 289
   end
   object DBGrid1: TDBGrid
     AlignWithMargins = True
-    Left = 402
+    Left = 405
     Top = 60
-    Width = 435
+    Width = 432
     Height = 511
     Align = alClient
     DataSource = DataSourceUser
@@ -33829,9 +33826,6 @@ object FormMain: TFormMain
       Align = alLeft
       BevelOuter = bvNone
       TabOrder = 0
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitHeight = 57
       object Label1: TLabel
         Left = 0
         Top = 0
@@ -33853,9 +33847,6 @@ object FormMain: TFormMain
         TabOrder = 0
         TextHint = #1055#1054#1048#1057#1050
         OnKeyUp = EditSearchGroupKeyUp
-        ExplicitLeft = 48
-        ExplicitTop = 24
-        ExplicitWidth = 121
       end
     end
     object Panel3: TPanel
@@ -33867,10 +33858,6 @@ object FormMain: TFormMain
       Align = alClient
       BevelOuter = bvNone
       TabOrder = 1
-      ExplicitLeft = 444
-      ExplicitTop = 0
-      ExplicitWidth = 396
-      ExplicitHeight = 57
       object Label2: TLabel
         Left = 0
         Top = 0
@@ -33892,8 +33879,6 @@ object FormMain: TFormMain
         TabOrder = 0
         TextHint = #1055#1054#1048#1057#1050
         OnKeyUp = EditSearchUserKeyUp
-        ExplicitTop = 29
-        ExplicitWidth = 396
       end
     end
     object Panel4: TPanel

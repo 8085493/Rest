@@ -1,4 +1,4 @@
-unit UnitDataBase;
+п»їunit UnitDataBase;
 
 interface
 
@@ -51,7 +51,7 @@ begin
       result := true;
     except
       on E: Exception do
-        MessageDlg('Ошибка подключения к базе',mtError,[mbOK],1);
+        MessageDlg('РћС€РёР±РєР° РїРѕРґРєР»СЋС‡РµРЅРёСЏ Рє Р±Р°Р·Рµ', mtError, [mbOK], 1);
     end;
   end;
 end;

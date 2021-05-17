@@ -19,9 +19,9 @@ object FormMain: TFormMain
   object Label2: TLabel
     AlignWithMargins = True
     Left = 3
-    Top = 204
+    Top = 194
     Width = 319
-    Height = 134
+    Height = 144
     Align = alBottom
     Caption = 
       #1053#1072' '#1089#1083#1091#1095#1072#1081' '#1077#1089#1083#1080' '#1082#1090#1086' '#1090#1086' '#1079#1072#1087#1091#1089#1090#1080#1090'! '#13#10#1058#1072#1082' '#1089#1083#1086#1078#1080#1083#1086#1089#1100', '#1095#1090#1086' MsSQL '#1089#1077#1088#1074#1077 +
@@ -30,7 +30,8 @@ object FormMain: TFormMain
       #1086#1088' '#1085#1086' '#1079#1072#1090#1086' '#1073#1091#1076#1077#1090' '#1088#1072#1073#1086#1090#1072#1090#1100'.'#13#10#1044#1072#1085#1085#1099#1077' '#1080#1079' '#1092#1072#1081#1083#1072' User.sql '#1103' '#1087#1077#1088#1077#1085#1077#1089' '#1074 +
       ' SQLite, '#1073#1072#1079#1072' '#1083#1077#1078#1080#1090' '#1074' '#1082#1086#1088#1085#1077' '#1089' exe '#13#10
     WordWrap = True
-    ExplicitTop = 248
+    ExplicitTop = 204
+    ExplicitWidth = 311
   end
   object PanelButton: TPanel
     Left = 0
@@ -87,11 +88,10 @@ object FormMain: TFormMain
       AlignWithMargins = True
       Left = 5
       Top = 23
-      Width = 309
+      Width = 28
       Height = 18
       Align = alTop
       Caption = #1055#1086#1088#1090
-      ExplicitWidth = 28
     end
     object EditPort: TEdit
       Left = 2

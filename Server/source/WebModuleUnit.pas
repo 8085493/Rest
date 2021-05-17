@@ -4,12 +4,10 @@ interface
 
 uses
   System.SysUtils, System.Classes, Web.HTTPApp, Datasnap.DSHTTPCommon,
-  Datasnap.DSHTTPWebBroker, Datasnap.DSServer,
-  Web.WebFileDispatcher, Web.HTTPProd,
-  DataSnap.DSAuth,
-  Datasnap.DSProxyJavaScript, IPPeerServer, Datasnap.DSMetadata,
-  Datasnap.DSServerMetadata, Datasnap.DSClientMetadata, Datasnap.DSCommonServer,
-  Datasnap.DSHTTP;
+  Datasnap.DSHTTPWebBroker, Datasnap.DSServer, Web.WebFileDispatcher,
+  Web.HTTPProd, DataSnap.DSAuth, Datasnap.DSProxyJavaScript, IPPeerServer,
+  Datasnap.DSMetadata, Datasnap.DSServerMetadata, Datasnap.DSClientMetadata,
+  Datasnap.DSCommonServer, Datasnap.DSHTTP;
 
 type
   TWebModule1 = class(TWebModule)
@@ -18,21 +16,14 @@ type
     DSServerClass1: TDSServerClass;
     ServerFunctionInvoker: TPageProducer;
     ReverseString: TPageProducer;
-
     WebFileDispatcher1: TWebFileDispatcher;
     DSProxyGenerator1: TDSProxyGenerator;
     DSServerMetaDataProvider1: TDSServerMetaDataProvider;
-    procedure DSServerClass1GetClass(DSServerClass: TDSServerClass;
-      var PersistentClass: TPersistentClass);
-    procedure ServerFunctionInvokerHTMLTag(Sender: TObject; Tag: TTag;
-      const TagString: string; TagParams: TStrings; var ReplaceText: string);
-    procedure WebModuleDefaultAction(Sender: TObject;
-      Request: TWebRequest; Response: TWebResponse; var Handled: Boolean);
-    procedure WebModuleBeforeDispatch(Sender: TObject;
-      Request: TWebRequest; Response: TWebResponse; var Handled: Boolean);
-    procedure WebFileDispatcher1BeforeDispatch(Sender: TObject;
-      const AFileName: string; Request: TWebRequest; Response: TWebResponse;
-      var Handled: Boolean);
+    procedure DSServerClass1GetClass(DSServerClass: TDSServerClass; var PersistentClass: TPersistentClass);
+    procedure ServerFunctionInvokerHTMLTag(Sender: TObject; Tag: TTag; const TagString: string; TagParams: TStrings; var ReplaceText: string);
+    procedure WebModuleDefaultAction(Sender: TObject; Request: TWebRequest; Response: TWebResponse; var Handled: Boolean);
+    procedure WebModuleBeforeDispatch(Sender: TObject; Request: TWebRequest; Response: TWebResponse; var Handled: Boolean);
+    procedure WebFileDispatcher1BeforeDispatch(Sender: TObject; const AFileName: string; Request: TWebRequest; Response: TWebResponse; var Handled: Boolean);
     procedure WebModuleCreate(Sender: TObject);
   private
     { Private declarations }
@@ -50,16 +41,15 @@ implementation
 
 {$R *.dfm}
 
-uses ServerMethodsUnit, Web.WebReq;
+uses
+  ServerMethodsUnit, Web.WebReq;
 
-procedure TWebModule1.DSServerClass1GetClass(
-  DSServerClass: TDSServerClass; var PersistentClass: TPersistentClass);
+procedure TWebModule1.DSServerClass1GetClass(DSServerClass: TDSServerClass; var PersistentClass: TPersistentClass);
 begin
   PersistentClass := ServerMethodsUnit.TServerMethods1;
 end;
 
-procedure TWebModule1.ServerFunctionInvokerHTMLTag(Sender: TObject; Tag: TTag;
-  const TagString: string; TagParams: TStrings; var ReplaceText: string);
+procedure TWebModule1.ServerFunctionInvokerHTMLTag(Sender: TObject; Tag: TTag; const TagString: string; TagParams: TStrings; var ReplaceText: string);
 begin
   if SameText(TagString, 'urlpath') then
     ReplaceText := string(Request.InternalScriptName)
@@ -80,24 +70,20 @@ begin
     ReplaceText := DateTimeToStr(Now)
   else if SameText(TagString, 'serverfunctioninvoker') then
     if AllowServerFunctionInvoker then
-      ReplaceText :=
-      '<div><a href="' + string(Request.InternalScriptName) +
-      '/ServerFunctionInvoker" target="_blank">Server Functions</a></div>'
+      ReplaceText := '<div><a href="' + string(Request.InternalScriptName) + '/ServerFunctionInvoker" target="_blank">Server Functions</a></div>'
     else
       ReplaceText := '';
 end;
 
-procedure TWebModule1.WebModuleDefaultAction(Sender: TObject;
-  Request: TWebRequest; Response: TWebResponse; var Handled: Boolean);
+procedure TWebModule1.WebModuleDefaultAction(Sender: TObject; Request: TWebRequest; Response: TWebResponse; var Handled: Boolean);
 begin
-  if (Request.InternalPathInfo = '') or (Request.InternalPathInfo = '/')then
+  if (Request.InternalPathInfo = '') or (Request.InternalPathInfo = '/') then
     Response.Content := ReverseString.Content
   else
     Response.SendRedirect(Request.InternalScriptName + '/');
 end;
 
-procedure TWebModule1.WebModuleBeforeDispatch(Sender: TObject;
-  Request: TWebRequest; Response: TWebResponse; var Handled: Boolean);
+procedure TWebModule1.WebModuleBeforeDispatch(Sender: TObject; Request: TWebRequest; Response: TWebResponse; var Handled: Boolean);
 begin
   if FServerFunctionInvokerAction <> nil then
     FServerFunctionInvokerAction.Enabled := AllowServerFunctionInvoker;
@@ -105,13 +91,10 @@ end;
 
 function TWebModule1.AllowServerFunctionInvoker: Boolean;
 begin
-  Result := (Request.RemoteAddr = '127.0.0.1') or
-    (Request.RemoteAddr = '0:0:0:0:0:0:0:1') or (Request.RemoteAddr = '::1');
+  Result := (Request.RemoteAddr = '127.0.0.1') or (Request.RemoteAddr = '0:0:0:0:0:0:0:1') or (Request.RemoteAddr = '::1');
 end;
 
-procedure TWebModule1.WebFileDispatcher1BeforeDispatch(Sender: TObject;
-  const AFileName: string; Request: TWebRequest; Response: TWebResponse;
-  var Handled: Boolean);
+procedure TWebModule1.WebFileDispatcher1BeforeDispatch(Sender: TObject; const AFileName: string; Request: TWebRequest; Response: TWebResponse; var Handled: Boolean);
 var
   D1, D2: TDateTime;
 begin
@@ -131,6 +114,7 @@ begin
 end;
 
 initialization
+
 finalization
   Web.WebReq.FreeWebModules;
 

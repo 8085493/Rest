@@ -23,8 +23,7 @@ object FormSetting: TFormSetting
     Height = 20
     Align = alBottom
     Caption = #1057#1077#1088#1074#1077#1088' '#1087#1086#1076#1082#1083#1102#1095#1077#1085#1080#1103
-    ExplicitLeft = -2
-    ExplicitTop = 53
+    ExplicitWidth = 147
   end
   object EditServerAdress: TEdit
     AlignWithMargins = True
@@ -35,8 +34,6 @@ object FormSetting: TFormSetting
     Align = alBottom
     TabOrder = 0
     Text = 'http://localhost:8081'
-    ExplicitLeft = -2
-    ExplicitTop = 79
   end
   object ButtonConnect: TButton
     AlignWithMargins = True
@@ -50,8 +47,5 @@ object FormSetting: TFormSetting
     Caption = #1055#1086#1076#1082#1083#1102#1095#1080#1090#1100#1089#1103
     TabOrder = 1
     OnClick = ButtonConnectClick
-    ExplicitLeft = -2
-    ExplicitTop = 113
-    ExplicitWidth = 374
   end
 end

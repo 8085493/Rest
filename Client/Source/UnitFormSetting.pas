@@ -1,11 +1,11 @@
-unit UnitFormSetting;
+﻿unit UnitFormSetting;
 
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  UnitSetting,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls;
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes, Vcl.Graphics, UnitSetting, Vcl.Controls, Vcl.Forms,
+  Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls;
 
 type
   TFormSetting = class(TForm)
@@ -26,17 +26,20 @@ implementation
 
 {$R *.dfm}
 
-uses UnitMainForm;
+uses
+  UnitMainForm;
+
 procedure TFormSetting.ButtonConnectClick(Sender: TObject);
 begin
- ServerSetting:=EditServerAdress.Text;
- with TFormMain.Create(Application) do
- begin
-   setLoadData();
-   self.Hide;
-   ShowModal();
-   self.Show;
- end;
+  ServerSetting := EditServerAdress.Text;
+  with TFormMain.Create(Application) do
+  begin
+    setLoadData();
+    self.Hide;
+    ShowModal();
+    self.Show;
+  end;
 end;
 
 end.
+

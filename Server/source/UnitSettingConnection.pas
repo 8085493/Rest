@@ -18,6 +18,7 @@ type
 
 implementation
 
+
 { TSettingConnection }
 
 constructor TSettingConnection.Create;

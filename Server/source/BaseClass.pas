@@ -5,10 +5,10 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
   System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
-  FireDAC.Stan.Intf, FireDAC.Stan.Option, Data.DBXJSONCommon,System.JSON,
-  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
-  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
-  Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client;
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, Data.DBXJSONCommon, System.JSON,
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.DB,
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client;
 
 type
   TBaseSQL = class
@@ -35,8 +35,7 @@ type
     connectionBC: TFDConnection;
     function StrToBollMy(values: string): Boolean;
     function GetConnection: TFDConnection;
-    function GetJsonQuery(IsNameArray : string): TJSONObject;
-
+    function GetJsonQuery(IsNameArray: string): TJSONObject;
   end;
 
 implementation
@@ -105,21 +104,21 @@ begin
   Result := DataSource;
 end;
 
-function TBaseSQL.GetJsonRecord : TJSONObject;
+function TBaseSQL.GetJsonRecord: TJSONObject;
 var
- i : Integer;
+  i: Integer;
 begin
-  Result:=TJSONObject.Create;
-    for I :=0 to Query.FieldCount-1  do
-    begin
-      Result.AddPair(Query.Fields[i].FieldName,GetValuesFieldString(Query.Fields[i].FieldName));
-    end;
+  Result := TJSONObject.Create;
+  for i := 0 to Query.FieldCount - 1 do
+  begin
+    Result.AddPair(Query.Fields[i].fieldname, GetValuesFieldString(Query.Fields[i].fieldname));
+  end;
 
 end;
 
 function TBaseSQL.GetJsonAllRecord(): TJSONArray;
 begin
- result := TJSONArray.Create;
+  result := TJSONArray.Create;
   while not EOF do
   begin
     result.AddElement(GetJsonRecord);
@@ -127,11 +126,10 @@ begin
   end;
 end;
 
-
 function TBaseSQL.GetJsonQuery(IsNameArray: string): TJSONObject;
 begin
   result := TJSONObject.Create;
-  result.AddPair(IsNameArray,GetJsonAllRecord());
+  result.AddPair(IsNameArray, GetJsonAllRecord());
 end;
 
 function TBaseSQL.EOF: Boolean;
@@ -173,7 +171,6 @@ begin
       ShowMessage(e.Message);
   end;
 end;
-
 
 function TBaseSQL.getConnection: TFDConnection;
 begin

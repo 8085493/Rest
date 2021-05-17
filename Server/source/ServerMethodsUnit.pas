@@ -2,7 +2,9 @@
 
 interface
 
-uses System.SysUtils, System.Classes, Datasnap.DSServer,System.Json, Datasnap.DSAuth;
+uses
+  System.SysUtils, System.Classes, Datasnap.DSServer, System.Json,
+  Datasnap.DSAuth;
 
 type
 {$METHODINFO ON}
@@ -13,16 +15,16 @@ type
     { Public declarations }
     function EchoString(Value: string): string;
     function ReverseString(Value: string): string;
-    function GetListGroup(values : string): TJSONObject;
-    function GetListUser(values : string): TJSONObject;
-    function GetPhotoUser(IsIDUser : Integer) : TJSONObject;
+    function GetListGroup(values: string): TJSONObject;
+    function GetListUser(values: string): TJSONObject;
+    function GetPhotoUser(IsIDUser: Integer): TJSONObject;
   end;
 {$METHODINFO OFF}
 
 implementation
 
-
-uses System.StrUtils,UnitDataBase,UnitSQLDataBase;
+uses
+  System.StrUtils, UnitDataBase, UnitSQLDataBase;
 
 function TServerMethods1.EchoString(Value: string): string;
 begin
@@ -31,23 +33,23 @@ end;
 
 function TServerMethods1.GetListGroup(values: string): TJSONObject;
 begin
-   Result:= TGroupList.Create(DataModule1.FDConnection).GetInfoGroup(values);
+  Result := TGroupList.Create(DataModule1.FDConnection).GetInfoGroup(values);
 end;
 
 function TServerMethods1.GetListUser(values: string): TJSONObject;
 begin
-   Result:= TUsetList.Create(DataModule1.FDConnection).GetListUser(values);
+  Result := TUsetList.Create(DataModule1.FDConnection).GetListUser(values);
 end;
-
 
 function TServerMethods1.GetPhotoUser(IsIDUser: Integer): TJSONObject;
 begin
- Result := TUsetList.Create(DataModule1.FDConnection).GetPhotoUser(IsIDUser);
+  Result := TUsetList.Create(DataModule1.FDConnection).GetPhotoUser(IsIDUser);
 end;
 
 function TServerMethods1.ReverseString(Value: string): string;
 begin
   Result := System.StrUtils.ReverseString(Value);
 end;
+
 end.
 

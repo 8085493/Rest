@@ -11,6 +11,7 @@ object ClientModule: TClientModule
     Top = 8
   end
   object RESTResponse: TRESTResponse
+    ContentType = 'application/json; charset="UTF-8"'
     Left = 232
     Top = 120
   end
